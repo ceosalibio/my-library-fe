@@ -4,6 +4,7 @@
             <div>
                 <Button
                     :to="'/'"
+                    :size="'small'"
                 >
                     <v-icon>
                         mdi-arrow-left
@@ -12,7 +13,7 @@
                 </Button>
             </div>
     
-            <div class="mt-2">
+            <div class="mt-5">
                 <div>
                     <Textfield 
                         v-model="storeData.title"
