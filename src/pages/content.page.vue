@@ -13,6 +13,8 @@
         <div class="text-h5 mt-5">
             {{ storeData.content.title }}
         </div>
+
+        <v-divider class="mt-2"/>
         <div class="mt-10" v-if="!storeData.contentResult">
             <v-list v-for="item in storeData.content.description">
                 <div class="pre-wrap" v-if="item.description">
