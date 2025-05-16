@@ -4,6 +4,7 @@
             <Button
                 :to="'/'"
                 :size="'small'"
+                @on-click="storeData.content = {}"
             >
                 <v-icon>mdi-arrow-left</v-icon>
                 BACK
