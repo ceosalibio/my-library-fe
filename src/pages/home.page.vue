@@ -10,7 +10,7 @@
                         prepend-avatar="https://www.gravatar.com/avatar/?d=mp"
                     >
                         <v-list-item-content>
-                            <v-list-item-title class="text-h5 title" @click="viewPage(item)">{{item.title}}</v-list-item-title>
+                            <v-list-item-title class="text-h6 title" @click="viewPage(item)" >{{item.title}}</v-list-item-title>
                             <v-list-item-subtitle>{{item.description[0].description}}</v-list-item-subtitle>
                             <div class="text-caption text-grey">
                                 Created at – {{ dateString(item.created_at) }}
