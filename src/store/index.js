@@ -1,10 +1,12 @@
 import { defineStore } from "pinia"
 import { useRouter } from "vue-router"
 import instance from "../utils/instance"
+import { getItem } from '../utils/cache'
 
 export const store = defineStore('store', {
     state : () =>({
         router : useRouter(),
+        user : getItem('user') || null,
         title : '',
         description : [
             {id : 1,description : '', code : '', image :''}
@@ -16,6 +18,10 @@ export const store = defineStore('store', {
         noResult : false,
         contentResult : false
     }),
+
+    getters : {
+        isAuthenticated: (state) => !!state.user
+    },
     actions : {
         async getAll(){
             try {

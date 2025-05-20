@@ -23,6 +23,7 @@
                                 class="button-text"
                                 :color="'warning'"
                                 @on-click="goUpdate(item)"
+                                v-if="storeData.isAuthenticated"
                             >
                                 update
                             </Button>
@@ -32,6 +33,7 @@
                                 class="button-text"
                                 :color="'red'"
                                 @on-click="storeData.delete(item.id)"
+                                v-if="storeData.isAuthenticated"
                             >
                                 delete
                             </Button>
