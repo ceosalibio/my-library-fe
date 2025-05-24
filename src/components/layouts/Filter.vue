@@ -30,21 +30,25 @@
           :variant="'text'" 
           :color="'success'" 
           :to="'/create'"
+          v-if="storeData.isAuthenticated"
         >
           Add
         </Button>
       </div>
     </div>
-    <div class="mt-5 mr-5">
-      <h3>Signin</h3>
+    <div class="mt-5 mr-10 pointer" >
+      <span v-if="!storeData.isAuthenticated" @click="openDialog()">Signin</span>
+      <span v-else @click="signOut()">Signout</span>
     </div>
+    
 </div>
 
 <!-- small screen -->
 <div class="d-sm-none ma-2">
   <div class="d-flex justify-space-between">
     <h2 class="ma-0">CEOLibrary</h2>
-    <span>Signin</span>
+      <span v-if="!storeData.isAuthenticated" @click="openDialog()" class="pointer">Signin</span>
+      <span v-else @click="signOut()" class="pointer">Sign out</span>
   </div>
 
   <div class="d-flex ma-2">
@@ -75,21 +79,41 @@
             :size="'x-small'" 
             :color="'success'" 
             :to="'/create'"
+            v-if="storeData.isAuthenticated"
           >
             Add
           </Button>
         </div>
   </div>
+
+  <DialogAuth ref="auth" />
 </div>
   
 </template>
 
 <script setup>
   import { store } from '../../store';
-  import { watch } from 'vue';
+  import { ref, watch } from 'vue';
+  import { removeItem } from '../../utils/cache';
+  import DialogAuth from '../../auth/auth.vue';
   
-
   const storeData = store()
+  const auth = ref()
+
+  const openDialog = () =>{
+    auth.value?.showDialog()
+  }
+
+  const signOut = () =>{
+    let isConFirmed = confirm("Are you sure you want to sign out?")
+    if(isConFirmed){
+      removeItem('user')
+      storeData.overlay = true
+      setTimeout(() => {
+        window.location.reload()
+      }, 1500);
+    }
+  }
 
   watch(
   () => storeData.keyword,

@@ -14,3 +14,12 @@ body{
 .code-font{
   font-family:'Courier New', Courier, monospace;
 }
+
+.pointer {
+  cursor: pointer;
+}
+
+.pointer:hover {
+  color:blue;
+  text-decoration: underline;
+}

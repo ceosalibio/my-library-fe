@@ -4,6 +4,7 @@ import Textarea from '../components/ui/Textarea.vue'
 import Button from '../components/ui/Button.vue'
 import Card from '../components/ui/Card.vue'
 import Overlay from '../components/ui/Overlay.vue'
+import Dialog from '../components/ui/Dialog.vue'
 
 export default {
     install(app){
@@ -13,5 +14,6 @@ export default {
         app.component('Button',Button)
         app.component('Card',Card)
         app.component('Overlay',Overlay)
+        app.component('Dialog',Dialog)
     }
 }
